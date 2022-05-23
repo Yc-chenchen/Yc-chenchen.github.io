@@ -68,19 +68,73 @@
       
       
   
-    <h1 class="title"><a href="/2022/05/23/hexo指令/">hexo指令</a></h1>
+    <h1 class="title"><a href="/2022/05/23/hexo指令/">hexo指令详解</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="创建一篇新文章："><a href="#创建一篇新文章：" class="headerlink" title="创建一篇新文章："></a>创建一篇新文章：</h2><p>在博客根目录下面执行： </p>
+        <p>0.对main分支进行部署更新</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean 	# 清理缓存，可选用</span><br><span class="line">$ hexo g 	# 生成资源文件</span><br><span class="line">$ hexo d	# 部署到服务器</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="1-hexo-init"><a href="#1-hexo-init" class="headerlink" title="1.hexo init"></a>1.hexo init</h2><p> <code>hexo init</code> 命令用于初始化本地文件夹为网站的根目录 </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>folder</code> 可选参数，用以指定初始化目录的路径，若无指定则默认为当前目录</li>
+</ul>
+<h2 id="2-hexo-new"><a href="#2-hexo-new" class="headerlink" title="2.hexo new"></a>2.hexo new</h2><p> <code>hexo new</code> 命令用于新建文章，<strong>一般可以简写为 <code>hexo n</code></strong> </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] <span class="language-xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>layout</code> 可选参数，用以指定文章类型，若无指定则默认由配置文件中的 default_layout 选项决定</li>
+<li> 必填参数，用以指定文章标题，如果参数值中含有空格，则需要使用双引号包围 </li>
+</ul>
+<p>在博客根目录下面执行： </p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;文章标题&quot;</span><br></pre></td></tr></table></figure>
 
 <p> 例如：你想创建一个名为”我的第一个博客“的文章 ，可以执行：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;my-first-blog&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;my-first-blog&quot;</span><br></pre></td></tr></table></figure>
 
 <p> 文章链接建议是英文，然后会显示你的文章生成的目录，每次生成的文章都固定在你的博客根目录下面的source/_posts下 </p>
+<h2 id="3-hexo-generate"><a href="#3-hexo-generate" class="headerlink" title="3.hexo generate"></a>3.hexo generate</h2><p> <code>hexo generate</code> 命令用于生成静态文件，<strong>一般可以简写为 <code>hexo g</code></strong> </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-d</code> 选项，指定生成后部署，<strong>与 <code>hexo d -g</code> 等价</strong></li>
+</ul>
+<h2 id="4-hexo-server"><a href="#4-hexo-server" class="headerlink" title="4.hexo server"></a>4.hexo server</h2><p> <code>hexo server</code> 命令用于启动本地服务器，<strong>一般可以简写为 <code>hexo s</code></strong> </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>-p</code> 选项，指定服务器端口，默认为 4000</p>
+</li>
+<li><p><code>-i</code> 选项，指定服务器 IP 地址，默认为 0.0.0.0</p>
+</li>
+<li><p><code>-s</code> 选项，静态模式 ，仅提供 public 文件夹中的文件并禁用文件监视</p>
+<p><strong>说明</strong> ：运行服务器前需要安装 hexo-server 插件 </p>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-server --save</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-hexo-deploy"><a href="#5-hexo-deploy" class="headerlink" title="5.hexo deploy"></a>5.hexo deploy</h2><p> <code>hexo deploy</code> 命令用于部署网站，<strong>一般可以简写为 <code>hexo d</code></strong> </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-g</code> 选项，指定生成后部署，<strong>与 <code>hexo g -d</code> 等价</strong></li>
+</ul>
+<h2 id="6-hexo-clean"><a href="#6-hexo-clean" class="headerlink" title="6.hexo clean"></a>6.hexo clean</h2><p> <code>hexo clean</code> 命令用于清理缓存文件，是一个比较常用的命令 </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>网站显示异常时可尝试此操作</strong> </li>
+</ul>
 
       
     </div>
@@ -155,7 +209,19 @@
     </header>
     <div class="entry">
       
-        <h1 id="无"><a href="#无" class="headerlink" title="无"></a>无</h1>
+        <ul>
+<li><p>教育经历</p>
+<p>河北软件职业技术学院 在读</p>
+</li>
+</ul>
+<ul>
+<li><p>爱好</p>
+<p>打游戏</p>
+<p>打游戏</p>
+<p>打游戏</p>
+</li>
+</ul>
+
       
     </div>
     
@@ -197,7 +263,7 @@
   <ul class="entry">
     
       <li>
-        <a href="/2022/05/23/hexo指令/">hexo指令</a>
+        <a href="/2022/05/23/hexo指令/">hexo指令详解</a>
       </li>
     
       <li>
